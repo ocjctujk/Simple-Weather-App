@@ -1,20 +1,32 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+    <ion-title> Weather </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+  <form>
+    <ion-item>
+      <ion-label>Location</ion-label>
+      <ion-input type="text" #location></ion-input>
+      <ion-button (click)="onSelect(location.value)"><ion-icon name="search"></ion-icon></ion-button>
+    </ion-item>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+    <!-- <ion-searchbar debounce="100" (ionChange)="onChange($event)"></ion-searchbar>
+    <ion-list *ngFor="let item of items">
+      <ion-item>{{item}}</ion-item>
+    </ion-list> -->
+  </form>
+
+  <ion-card *ngIf="weatherData">
+    <ion-card-header >
+      <ion-card-subtitle>{{weatherData.location.country}}</ion-card-subtitle>
+      <ion-card-title>{{locationName}}</ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content>
+      Feels like {{temp}}
+    </ion-card-content>
+  </ion-card>
+
 </ion-content>
